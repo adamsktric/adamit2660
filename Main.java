@@ -1,98 +1,94 @@
 
-import java.util.Arrays;
-/*
- * IT-2660 - Lab 1
- * Student Name: Adam Kalo
- */
+import java.util.Iterator;
+import java.util.LinkedList;
+import java.util.Queue;
+import java.util.Stack;
 
-public class Main {
+// Your Name: Adam Kalo
+// Notes: The instructions are found in comments through the code starting with "Step n"
+//        Please leave the comments and add your code just after the comment.
+//        Use the examples in the book to complete the lab.
+
+class Main {
   public static void main(String[] args) {
-// The Array
-    int[] nums = {5, 9, 3, 12, 7, 3, 11, 5};
-// Sort the array
-    Arrays.sort(nums);
-// Output with while loop
-    int x = 0;
-    while (x < nums.length) {
-      System.out.println(nums[x]);
-      x++;
-    }
-    System.out.println("done");
-// Reverse with while loop
-    int y = nums.length - 1;
-    while (y >= 0) {
-      System.out.println(nums[y]);
-      y--;
-    }
-    System.out.println("done");
-// Calling methods from Lab1
-    Lab1.max(97, 32);
-    Lab1.min(88, 19);
-    Lab1.sum(nums);
-    Lab1.average(nums);
-    Lab1.max2(nums);
-    Lab1.min2(nums);
+    Lab2 lab = new Lab2();
+    // Comment/Uncomment the following 3 method calls as you work on each method.
+    // No code should be added to the main method. All of your code will go into the methods in Lab2.
+    // lab.linkedList();
+    // lab.queue();
+    lab.stack();
+  }
+}
 
-  }
-}     
+class Lab2 {
+  public void linkedList() {
+    // 1. Create a LinkedList<String> object called progLanguages
+      LinkedList<String> progLanguages = new LinkedList<String>();
+    // 2. Add elements to progLanguages: "Java", "Python", "JavaScript", "C++"
+      progLanguages.add("Java");
+      progLanguages.add("Python");
+      progLanguages.add("Javascript");
+      progLanguages.add("C++");
+    // 3. Remove the element "C++" from the list using .remove()
+      progLanguages.remove("C++");
+    // 4. Add an element "HTML" at index 2.
+      progLanguages.add(2, "HTML");
+    // 5. Iterate over progLanguages and use println() to output each element. You must create an Iterator<string> and use hasNext(), and next() similar to the example in our book.
+      Iterator<String> pL = progLanguages.iterator();
 
-// Add all of the methods here
-class Lab1 {
-// Max using if-else statement
-  public static void max(int a, int b) {
-
-    if (a > b) {
-      System.out.println(a);
-    } else {
-      System.out.println(b);
-    }
-  }
-// Min using if-else statement
-  public static void min(int a, int b) {
-    if (a < b) {
-      System.out.println(a);
-    } else {
-      System.out.println(b);
-    }
-  }
-// Sum of values in array
-  public static void sum(int[] nums) {
-    int sum = 0;
-    int i;
-   for (i = 0; i < nums.length; i++) {
-    sum += nums[i];
-   }
-   System.out.println(sum);
-  }
-// Average of values in array
-  public static void average(int[] nums) {
-    float avg, sums = 0;
-    int length = nums.length;
-    for (int num : nums) {
-      sums += num;
-    }
-    avg = sums / length;
-    System.out.println(avg);
-  }
-// Largest value in array
-  public static void max2(int[] nums) {
-    int largest = nums[0];
-    for (int n : nums) {
-      if (n > largest) {
-        largest = n;
+      while(pL.hasNext()){
+        System.out.println(pL.next());
       }
-    }
-    System.out.println(largest);
   }
-// Smallest value in array
-  public static void min2(int[] nums) {
-    int smallest = nums[0];
-    for ( int smol : nums) {
-      if (smallest > smol) {
-        smallest = smol;
-      }
-    }
-    System.out.println(smallest);
-  } 
+  
+  public void queue() {
+    // 6. Create a Queue<String> called q
+    Queue<String> q = new LinkedList<String>();
+    // 7. Add 5 first names to q.
+    q.offer("Adam");
+    q.offer("Chris");
+    q.offer("Beth");
+    q.offer("Derek");
+    q.offer("Sharon");
+    // 8. Uncomment the following line
+    System.out.println("Elements of queue: " + q);
 
+    // 9. Remove the head of the queue and assign it to a String variable removedElement.
+    //    Display the value of "Removed element: " + removedElement
+    String removedElement = q.poll();
+    System.out.println("Removed element: " + removedElement);
+    // 10. View the head of the queue using peek(). Output it's value.
+    System.out.println("Next in line: " + q.peek());
+    // 11. Using for(String element : q), output all of the values in the queue
+    for(String element : q){
+      System.err.println(element);
+    }
+    
+  }
+
+  public void stack() {
+    // 12. Create a Stack<String> called bookStack
+    Stack<String> bookStack = new Stack<String>();
+    // 13. Push the following book titles onto bookStack: "Clean Code", "Design Patterns", "Pragmatic Programmer"
+      bookStack.push("Clean Code");
+      bookStack.push("Design Patterns");
+      bookStack.push("Pragmatic Programmer");
+    // 14. pop() 1 book off the stack. Display it's value
+      String poppedBook = bookStack.pop();
+      System.out.println(poppedBook);
+    // 15. Use the peek() method to view the top book on the stack
+      System.out.println(bookStack.peek());
+    // 16. push() "Web DB Technologies" onto the stack
+      bookStack.push("Web DB Technologies");
+    // 17. Use the peek() method to view the top book on the stack
+      System.out.println(bookStack.peek());
+    // 18. Search for "Design Patterns" in the stack. Display the results of the search.
+      System.out.println(bookStack.search("Design Patterns"));
+    // 19. Call empty(). Output the results
+      System.out.println(bookStack.empty());
+    // 20. Print the titles of all of the books on the stack
+    System.out.println(bookStack);
+  }
+
+  
 }
